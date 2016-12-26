@@ -1,0 +1,128 @@
+<html>
+
+<head>
+    <title>Elephant_Chess</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+    #border_style {
+        padding: 250px;
+        border: 2px solid black;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    
+    #block1,
+    #block3,
+    #block5,
+    #block7,
+    #block9 {
+        height: 100px;
+        width: 100px;
+        background: #b58863;
+        display: inline-block;
+    }
+    
+    #block2,
+    #block4,
+    #block6,
+    #block8 {
+        height: 100px;
+        width: 100px;
+        background: #f0d9b5;
+        display: inline-block;
+    }
+    
+    #piece_select {
+        height: 100px;
+        width: 100px;
+        border: 2px black solid;
+        margin-left: 570px;
+    }
+    
+    #piece_frame2 {
+        height: 90px;
+        width: 90px;
+        background: #b58863;
+        margin: 3px;
+        margin-left: 18px;
+        margin-top: 5px;
+    }
+    
+    #chessboard {
+        float: left;
+    }
+    
+    #chessboard-pieces {
+        float: right;
+    }
+    
+    .drag_onBoard {
+        z-index: 1;
+        margin-left: -13px;
+    }
+    
+    .btn {
+        padding: 6px 10px;
+        border-radius: 0px;
+    }
+    </style>
+    <script>
+    $(document).ready(function() {
+
+        $("#elephant").draggable({
+            revert: "invalid"
+        });
+        $("#stop").on("click", function() {
+            $("#elephant").draggable({
+                revert: "invalid"
+            });
+        });
+        $("#start").on("click", function() {
+            $("#elephant").draggable({
+                revert: "valid",
+                containment: "#chessboard"
+            });
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <div class="container" id="border_style">
+        <div id="chessboard">
+            <div class="row">
+                <div class="col-md-4" id="block1"><img src="http://chessboardjs.com/img/chesspieces/wikipedia/bK.png"></div>
+                <div class="col-md-4" id="block2"></div>
+                <div class="col-md-4" id="block3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4" id="block4"></div>
+                <div class="col-md-4" id="block5"></div>
+                <div class="col-md-4" id="block6"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4" id="block7"></div>
+                <div class="col-md-4" id="block8"></div>
+                <div class="col-md-4" id="block9"></div>
+            </div>
+        </div>
+        <div id="piece_select">
+            <div class="row">
+                <div class="col-md-4" id="piece_frame2"><img src="http://chessboardjs.com/img/chesspieces/wikipedia/wR.png" class="drag_onBoard" id="elephant">
+                </div>
+                <div class="col-md-5" style="padding-top:10px;">
+                    <button class="btn btn-primary" id="start">Start</button>
+                </div>
+                <div class="col-md-5" style="padding-top:10px;">
+                    <button class="btn btn-danger" id="stop">Stop</button>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
